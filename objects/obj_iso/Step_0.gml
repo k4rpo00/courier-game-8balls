@@ -1,7 +1,7 @@
 /// @description Camera + pause
 
 // === PAUSE TOGGLE ===
-if (keyboard_check_pressed(vk_escape)) {
+if (keyboard_check_pressed(global.key_pause)) {
     if (!instance_exists(obj_pause_menu)) {
         instance_create_layer(0, 0, "Compatibility_Instances_Depth_0", obj_pause_menu);
         global.game_paused = true;
@@ -12,7 +12,7 @@ if (keyboard_check_pressed(vk_escape)) {
 
 /// Handle window resizing
 var js = (os_browser != browser_not_a_browser);
-// get window size:
+
 var ww, wh;
 if (js) {
     ww = display_get_width();
@@ -21,26 +21,34 @@ if (js) {
     ww = window_get_width();
     wh = window_get_height();
 }
-// get application surface:
+
 var sf = application_surface;
+
+if (!surface_exists(sf)) exit;
+if (ww <= 0 || wh <= 0) exit;
+
 var sw = surface_get_width(sf);
 var sh = surface_get_height(sf);
-// resize a.s. if they don't match:
+
 if (ww != sw || wh != sh) {
-    if (js) window_set_size(ww, wh);
+
+    if (js) {
+        window_set_size(ww, wh);
+    }
+
     surface_resize(sf, ww, wh);
-    // set new sizes for view:
-    __view_set( e__VW.WView, 0, ww );
-    __view_set( e__VW.HView, 0, wh );
-    __view_set( e__VW.WPort, 0, ww );
-    __view_set( e__VW.HPort, 0, wh );
-    // shift the view to maintain the same center point:
-    __view_set( e__VW.XView, 0, __view_get( e__VW.XView, 0 ) + ((sw - ww) div 2) );
-    __view_set( e__VW.YView, 0, __view_get( e__VW.YView, 0 ) + ((sh - wh) div 2) );
+
+    __view_set(e__VW.WView, 0, ww);
+    __view_set(e__VW.HView, 0, wh);
+    __view_set(e__VW.WPort, 0, ww);
+    __view_set(e__VW.HPort, 0, wh);
+
+    __view_set(e__VW.XView, 0, __view_get(e__VW.XView, 0) + ((sw - ww) div 2));
+    __view_set(e__VW.YView, 0, __view_get(e__VW.YView, 0) + ((sh - wh) div 2));
+
     global.base_view_w = ww;
     global.base_view_h = wh;
 }
-
 var target = global.camera_target;
 
 if (instance_exists(target)) {
@@ -54,7 +62,6 @@ if (instance_exists(target)) {
     __view_set(e__VW.YView, 0, ty - vh * 0.5);
 }
 
-/// Cursor positioning
 if (mouse_check_button(mb_right)) {
     cursor_x = iso_from_scr_x(mouse_x, mouse_y);
     cursor_y = iso_from_scr_y(mouse_x, mouse_y);

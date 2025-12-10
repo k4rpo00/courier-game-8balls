@@ -23,10 +23,11 @@ if (grass_penalty) {
 
 if (occupied) {
 
-    if (keyboard_check(ord("W"))) {
+    
+    if (keyboard_check(global.key_up)) {
         speed = clamp(speed + accel, max_reverse, cur_max_speed);
     }
-    else if (keyboard_check(ord("S"))) {
+    else if (keyboard_check(global.key_down)) {
         speed = clamp(speed - accel, max_reverse, cur_max_speed);
     }
     else {
@@ -36,12 +37,13 @@ if (occupied) {
             speed -= decel * sign(speed);
     }
 
+  
     if (abs(speed) > 0.1) {
-        if (keyboard_check(ord("A"))) {
-            direction += turn_speed;    
+        if (keyboard_check(global.key_left)) {
+            direction += turn_speed;
         }
-        if (keyboard_check(ord("D"))) {
-            direction -= turn_speed;    
+        if (keyboard_check(global.key_right)) {
+            direction -= turn_speed;
         }
     }
 
@@ -123,7 +125,7 @@ iso_subimg = round(direction / 360 * sprite_get_number(iso_sprite));
 
 
 
-if (occupied && keyboard_check_pressed(ord("E"))) {
+if (occupied && keyboard_check_pressed(global.key_interact)) {
 
     var p = driver; 
 
@@ -137,7 +139,7 @@ if (occupied && keyboard_check_pressed(ord("E"))) {
             in_car  = false;
             car     = noone;
 
-         
+          exit_cooldown = room_speed div 4;
             global.camera_target = id;
         }
     }

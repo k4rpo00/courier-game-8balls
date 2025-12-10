@@ -1,4 +1,10 @@
 {
   "FolderOrderSettings":[],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"obj_settings_menu","order":1,"path":"objects/obj_settings_menu/obj_settings_menu.yy",},
+    {"name":"spr_player_walk_down","order":2,"path":"sprites/spr_player_walk_down/spr_player_walk_down.yy",},
+    {"name":"spr_player_walk_left","order":3,"path":"sprites/spr_player_walk_left/spr_player_walk_left.yy",},
+    {"name":"spr_player_walk_right","order":4,"path":"sprites/spr_player_walk_right/spr_player_walk_right.yy",},
+    {"name":"spr_player_walk_up","order":1,"path":"sprites/spr_player_walk_up/spr_player_walk_up.yy",},
+  ],
 }
