@@ -7,20 +7,40 @@ if (global.game_paused) {
 
 if (!in_car) {
 
-    
-    var h = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-    var v = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+// ISO movement (screen directions)
+    var dx = 0;
+    var dy = 0;
 
-    x += h * walk_speed;
-    y += v * walk_speed;
+    if (keyboard_check(ord("W"))) {
+        dx -= walk_speed;
+        dy -= walk_speed;
+    }
+    if (keyboard_check(ord("S"))) {
+        dx += walk_speed;
+        dy += walk_speed;
+    }
+    if (keyboard_check(ord("A"))) {
+        dx -= walk_speed;
+        dy += walk_speed;
+    }
+    if (keyboard_check(ord("D"))) {
+        dx += walk_speed;
+        dy -= walk_speed;
+    }
 
-   
-    if (h != 0 || v != 0) {
+    // ✅ SIMPLE movement (no collision)
+    x += dx;
+    y += dy;
+
+    // Animation
+    if (dx != 0 || dy != 0) {
         image_speed = 1;
     } else {
         image_speed = 0;
         image_index = 0;
     }
+
+}
 
   
     if (keyboard_check_pressed(ord("E"))) {
@@ -46,7 +66,6 @@ if (!in_car) {
         }
     }
 
-}
 
 else {
     if (instance_exists(car)) {
