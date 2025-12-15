@@ -7,6 +7,13 @@ if (keyboard_check_pressed(global.key_pause)) {
         global.game_paused = true;
     }
 }
+if (keyboard_check_pressed(ord("M"))) {
+    if (!instance_exists(obj_world_map)) {
+        instance_create_layer(0, 0, "Compatibility_Instances_Depth_0", obj_world_map);
+    } else {
+        with (obj_world_map) instance_destroy();
+    }
+}
 
 
 
