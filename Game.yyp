@@ -31,7 +31,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.1.210",
+    "IDEVersion":"2024.14.2.212",
   },
   "name":"Game",
   "resources":[
@@ -45,11 +45,13 @@
     {"id":{"name":"obj_house","path":"objects/obj_house/obj_house.yy",},},
     {"id":{"name":"obj_iso","path":"objects/obj_iso/obj_iso.yy",},},
     {"id":{"name":"obj_pause_menu","path":"objects/obj_pause_menu/obj_pause_menu.yy",},},
+    {"id":{"name":"obj_pizzeria","path":"objects/obj_pizzeria/obj_pizzeria.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_road","path":"objects/obj_road/obj_road.yy",},},
     {"id":{"name":"obj_settings_menu","path":"objects/obj_settings_menu/obj_settings_menu.yy",},},
     {"id":{"name":"obj_tile","path":"objects/obj_tile/obj_tile.yy",},},
     {"id":{"name":"pth_test","path":"paths/pth_test/pth_test.yy",},},
+    {"id":{"name":"rm_2","path":"rooms/rm_2/rm_2.yy",},},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"id":{"name":"__init_global","path":"scripts/__init_global/__init_global.yy",},},
     {"id":{"name":"__init_view","path":"scripts/__init_view/__init_view.yy",},},
@@ -62,6 +64,7 @@
     {"id":{"name":"iso_to_scr_y","path":"scripts/iso_to_scr_y/iso_to_scr_y.yy",},},
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},},
     {"id":{"name":"trace","path":"scripts/trace/trace.yy",},},
+    {"id":{"name":"Room","path":"sprites/Room/Room.yy",},},
     {"id":{"name":"spr_building","path":"sprites/spr_building/spr_building.yy",},},
     {"id":{"name":"spr_car","path":"sprites/spr_car/spr_car.yy",},},
     {"id":{"name":"spr_hotel","path":"sprites/spr_hotel/spr_hotel.yy",},},
@@ -78,6 +81,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+    {"roomId":{"name":"rm_2","path":"rooms/rm_2/rm_2.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[

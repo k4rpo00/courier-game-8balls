@@ -32,9 +32,29 @@ if (!in_car) {
         dy -= walk_speed;
     }
 
-    x += dx;
-    y += dy;
+   var col_obj  = obj_building;
+   var col_obj1 = obj_hotel;
+   var col_obj2 = obj_house;
 
+   var nx = x + dx;
+   var ny = y + dy;
+
+
+if (!place_meeting(nx, ny, col_obj) && !place_meeting(nx, ny, col_obj1) && !place_meeting(nx, ny, col_obj2)) {
+    x = nx;
+    y = ny;
+}
+else {
+    
+    if (!place_meeting(nx, y, col_obj) && !place_meeting(nx, y, col_obj1) && !place_meeting(nx, y, col_obj2)) {
+        x = nx;
+    }
+
+   
+    if (!place_meeting(x, ny, col_obj) && !place_meeting(x, ny, col_obj1) && !place_meeting(x, ny, col_obj2)) {
+        y = ny;
+    }
+}
     
 
     if (dx != 0 || dy != 0) {
