@@ -1,67 +1,66 @@
 event_inherited();
-if (global.game_paused) {
-    exit;
-}
+
+if (global.game_paused) exit;
 
 var on_road  = place_meeting(x, y, obj_road);
 var on_grass = !on_road;
 
 if (on_grass) {
     grass_timer += 1;
-    if (grass_timer > room_speed * 2) {
-        grass_penalty = true;
-    }
+    if (grass_timer > room_speed * 2) grass_penalty = true;
 } else {
     grass_timer   = 0;
     grass_penalty = false;
 }
 
-var cur_max_speed = max_speed;
+var cur_max_fwd = max_speed;
+var cur_max_rev = max_reverse; 
+
+var cur_accel = accel;
+var cur_decel = decel;
+
 if (grass_penalty) {
-    cur_max_speed = max_speed * 0.3;   
+
+    cur_max_fwd = max_speed * 0.3;
+
+  
+    cur_max_rev = max(max_reverse * 0.3, -0.6);
+
+
+    cur_accel = accel * 0.6;
+    cur_decel = decel * 0.4;
 }
+
 
 if (occupied) {
 
-    
     if (keyboard_check(global.key_up)) {
-        speed = clamp(speed + accel, max_reverse, cur_max_speed);
+        speed = clamp(speed + cur_accel, cur_max_rev, cur_max_fwd);
     }
     else if (keyboard_check(global.key_down)) {
-        speed = clamp(speed - accel, max_reverse, cur_max_speed);
+        speed = clamp(speed - cur_accel, cur_max_rev, cur_max_fwd);
     }
     else {
-        if (abs(speed) < decel)
-            speed = 0;
-        else
-            speed -= decel * sign(speed);
+        if (abs(speed) < cur_decel) speed = 0;
+        else speed -= cur_decel * sign(speed);
     }
 
-  
+   
     if (abs(speed) > 0.1) {
-        if (keyboard_check(global.key_left)) {
-            direction += turn_speed;
-        }
-        if (keyboard_check(global.key_right)) {
-            direction -= turn_speed;
-        }
+        var mul = 1; 
+       
+
+        if (keyboard_check(global.key_left))  direction += turn_speed * mul;
+        if (keyboard_check(global.key_right)) direction -= turn_speed * mul;
     }
 
 } else {
-    if (speed != 0) {
-        if (abs(speed) < decel)
-            speed = 0;
-        else
-            speed -= decel * sign(speed);
-    }
+    if (abs(speed) < cur_decel) speed = 0;
+    else speed -= cur_decel * sign(speed);
 }
-
 
 direction = direction mod 360;
 
-var col_obj  = obj_building;
-var col_obj1 = obj_hotel;
-var col_obj2 = obj_house;
 
 var hsp = lengthdir_x(speed, direction);
 var vsp = lengthdir_y(speed, direction);
@@ -71,52 +70,31 @@ var ny = y + vsp;
 
 var blocked = false;
 
-if (!place_meeting(nx, ny, col_obj)) {
+
+var b0 = obj_building;
+var b1 = obj_hotel;
+var b2 = obj_house;
+
+
+if (!place_meeting(nx, ny, b0) && !place_meeting(nx, ny, b1) && !place_meeting(nx, ny, b2)) {
     x = nx;
     y = ny;
 } else {
     blocked = true;
 
-    if (!place_meeting(nx, y, col_obj)) {
+ 
+    if (!place_meeting(nx, y, b0) && !place_meeting(nx, y, b1) && !place_meeting(nx, y, b2)) {
         x = nx;
     }
 
-    if (!place_meeting(x, ny, col_obj)) {
+  
+    if (!place_meeting(x, ny, b0) && !place_meeting(x, ny, b1) && !place_meeting(x, ny, b2)) {
         y = ny;
     }
 }
 
-if (!place_meeting(nx, ny, col_obj1)) {
-    x = nx;
-    y = ny;
-} else {
-    blocked = true;
 
-    if (!place_meeting(nx, y, col_obj1)) {
-        x = nx;
-    }
-
-    if (!place_meeting(x, ny, col_obj1)) {
-        y = ny;
-    }
-}
-
-if (!place_meeting(nx, ny, col_obj2)) {
-    x = nx;
-    y = ny;
-} else {
-    blocked = true;
-
-    if (!place_meeting(nx, y, col_obj2)) {
-        x = nx;
-    }
-
-    if (!place_meeting(x, ny, col_obj2)) {
-        y = ny;
-    }
-}
-
-if (blocked && speed > 0) {
+if (blocked && speed != 0) {
     speed = 0;
 }
 
@@ -124,14 +102,12 @@ if (blocked && speed > 0) {
 iso_subimg = round(direction / 360 * sprite_get_number(iso_sprite));
 
 
-
 if (occupied && keyboard_check_pressed(global.key_interact)) {
 
-    var p = driver; 
+    var p = driver;
 
     if (instance_exists(p)) {
         with (p) {
-          
             x = other.x;
             y = other.y + 16;
 
@@ -139,7 +115,9 @@ if (occupied && keyboard_check_pressed(global.key_interact)) {
             in_car  = false;
             car     = noone;
 
-          exit_cooldown = room_speed div 4;
+            
+            exit_cooldown = room_speed div 4;
+
             global.camera_target = id;
         }
     }
