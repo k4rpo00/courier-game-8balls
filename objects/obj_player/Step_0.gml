@@ -1,6 +1,6 @@
 event_inherited();
 
-if (global.game_paused) {
+if (variable_global_exists("game_paused") && global.game_paused) {
     image_speed = 0;
     exit;
 }

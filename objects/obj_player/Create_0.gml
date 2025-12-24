@@ -13,3 +13,10 @@ exit_cooldown = 0;
 facing = 2;          
 
 global.camera_target = id;
+if (variable_global_exists("next_spawn_x") && global.next_spawn_x != undefined) {
+    x = global.next_spawn_x;
+    y = global.next_spawn_y;
+
+    global.next_spawn_x = undefined;
+    global.next_spawn_y = undefined;
+}
