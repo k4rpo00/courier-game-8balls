@@ -36,24 +36,29 @@ if (!in_car) {
    var col_obj1 = obj_hotel;
    var col_obj2 = obj_house;
 
-   var nx = x + dx;
-   var ny = y + dy;
+var nx = x + dx;
+var ny = y + dy;
 
+var hit = place_meeting(nx, ny, obj_building)
+       || place_meeting(nx, ny, obj_house)
+       || place_meeting(nx, ny, obj_hotel);
 
-if (!place_meeting(nx, ny, col_obj) && !place_meeting(nx, ny, col_obj1) && !place_meeting(nx, ny, col_obj2)) {
+if (!hit) {
     x = nx;
     y = ny;
-}
-else {
-    
-    if (!place_meeting(nx, y, col_obj) && !place_meeting(nx, y, col_obj1) && !place_meeting(nx, y, col_obj2)) {
-        x = nx;
-    }
+} else {
+  
+    var hitx = place_meeting(nx, y, obj_building)
+            || place_meeting(nx, y, obj_house)
+            || place_meeting(nx, y, obj_hotel);
 
-   
-    if (!place_meeting(x, ny, col_obj) && !place_meeting(x, ny, col_obj1) && !place_meeting(x, ny, col_obj2)) {
-        y = ny;
-    }
+    if (!hitx) x = nx;
+
+    var hity = place_meeting(x, ny, obj_building)
+            || place_meeting(x, ny, obj_house)
+            || place_meeting(x, ny, obj_hotel);
+
+    if (!hity) y = ny;
 }
     
 
