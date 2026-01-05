@@ -1,7 +1,9 @@
 if (keyboard_check_pressed(global.key_pause)) {
-    global.game_paused = !global.game_paused;
+    if (!instance_exists(obj_pause_menu)) {
+        instance_create_layer(0, 0, "Compatibility_Instances_Depth_0", obj_pause_menu);
+        global.game_paused = true;
+    }
 }
-
 var target = global.camera_target;
 if (!instance_exists(target)) {
     target = instance_find(obj_player, 0);
