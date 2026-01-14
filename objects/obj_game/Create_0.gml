@@ -1,3 +1,5 @@
+application_surface_enable(true);
+application_surface_draw_enable(true);
 if (!variable_global_exists("game_paused")) global.game_paused = false;
 
 if (!variable_global_exists("key_up"))       global.key_up       = ord("W");

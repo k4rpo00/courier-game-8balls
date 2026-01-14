@@ -1,8 +1,11 @@
+application_surface_enable(true);
+application_surface_draw_enable(true);
 cols = ceil(room_width / 32);
 rows = ceil(room_height / 32);
 iso_sprite = ds_grid_create(cols, rows); 
 ds_grid_clear(iso_sprite, spr_iso_road);
 iso_subimg = ds_grid_create(cols, rows); 
+iso_grid = -1;
 ds_grid_clear(iso_subimg, 0);
 cursor_x = 0;
 cursor_y = 0;
@@ -25,3 +28,14 @@ window_set_size(1280, 720);
 
 
 window_set_fullscreen(true);
+if (!variable_global_exists("game_paused")) global.game_paused = false;
+
+
+if (!variable_global_exists("cb_mode")) 
+    global.cb_mode = 0;
+
+
+ini_open("settings.ini");
+global.cb_mode = ini_read_real("accessibility", "colorblind_mode", global.cb_mode);
+ini_close();
+global.pizzeria_door_id = id;

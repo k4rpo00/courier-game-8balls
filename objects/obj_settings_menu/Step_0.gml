@@ -54,8 +54,16 @@ for (var i = 0; i < action_count; i++) {
 
     if (mx > slot_x1 && mx < slot_x2 && my > sy1 && my < sy2) {
         if (mouse_check_button_pressed(mb_left)) {
-            waiting_for = i;     
-           keyboard_lastkey = 0;
+
+            
+            if (i <= 5) {
+                waiting_for = i;
+                keyboard_lastkey = 0;
+            }
+          
+            else if (i == 6) {
+                cb_mode_temp = (cb_mode_temp + 1) mod 4;
+            }
         }
     }
 }
@@ -83,6 +91,7 @@ if (mx > save_x1 && mx < save_x2 && my > save_y1 && my < save_y2) {
         global.key_right    = key_right_temp;
         global.key_interact = key_interact_temp;
         global.key_pause    = key_pause_temp;
+        global.cb_mode      = cb_mode_temp;
 
     
         ini_open("settings.ini");
@@ -92,8 +101,9 @@ if (mx > save_x1 && mx < save_x2 && my > save_y1 && my < save_y2) {
         ini_write_real("keys", "right",    global.key_right);
         ini_write_real("keys", "interact", global.key_interact);
         ini_write_real("keys", "pause",    global.key_pause);
+        ini_write_real("accessibility", "cb_mode", global.cb_mode); 
+        
         ini_close();
-
         instance_destroy();
         exit;
     }
@@ -104,4 +114,12 @@ if (mx > back_x1 && mx < back_x2 && my > back_y1 && my < back_y2) {
         instance_destroy();
         exit;
     }
+}
+var cb_row_y = first_y + 6 * row_h;
+var cb_sy1 = cb_row_y - 18;
+var cb_sy2 = cb_row_y + 18;
+
+if (mx > slot_x1 && mx < slot_x2 && my > cb_sy1 && my < cb_sy2) {
+    if (keyboard_check_pressed(vk_left))  cb_mode_temp = (cb_mode_temp + 3) mod 4;
+    if (keyboard_check_pressed(vk_right)) cb_mode_temp = (cb_mode_temp + 1) mod 4;
 }

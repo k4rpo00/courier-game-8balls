@@ -17,3 +17,8 @@ global.zoom_max  = 2.5;
 
 global.base_view_w = __view_get(e__VW.WView, 0);
 global.base_view_h = __view_get(e__VW.HView, 0);
+if (!instance_exists(obj_postfx))
+    instance_create_depth(0, 0, -1000, obj_postfx);
+
+if (!instance_exists(obj_hud))
+    instance_create_depth(0, 0, -999, obj_hud);

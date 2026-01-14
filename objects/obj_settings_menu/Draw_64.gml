@@ -60,6 +60,7 @@ function label_for_index(_i) {
         case 3: return "Move Right";
         case 4: return "Interact";
         case 5: return "Pause";
+        case 6: return "Colorblind Mode";
     }
     return "";
 }
@@ -101,14 +102,18 @@ for (var i = 0; i < action_count; i++) {
     draw_set_valign(fa_middle);
     draw_set_colour(c_white);
 
+   if (i <= 5) {
     var k = temp_key_for_index(i);
     draw_text((slot_x1 + slot_x2) * 0.5, row_y, key_to_text(k));
+} else if (i == 6) {
+    draw_text((slot_x1 + slot_x2) * 0.5, row_y, cb_name(cb_mode_temp));
+}
 }
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_colour(c_dkgray);
-draw_text(px1 + 30, py2 - 80, "Click a box to change a key.");
+draw_text(px1 + 30, py2 - 80, "Click a box to change a key. Click Colorblind Mode to cycle.");
 
 var btn_w = 180;
 var btn_h = 32;

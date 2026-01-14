@@ -7,7 +7,12 @@ with (obj_tile) if (iso_sprite >= 0) {
     ds_grid_set(_iso_sprite, _x, _y, iso_sprite);
     ds_grid_set(_iso_subimg, _x, _y, iso_subimg);
 }
-if (room != rm_test) exit;
+if (room != rm_test) exit; 
+
+
+if (ds_exists(iso_grid, ds_type_grid)) ds_grid_destroy(iso_grid);
+
+iso_grid = ds_grid_create(128, 128);
 
 global.zoom = 1;
 global.zoom_min = 0.5;

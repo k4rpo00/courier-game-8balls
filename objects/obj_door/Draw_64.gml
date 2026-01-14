@@ -39,7 +39,7 @@ var gy = (sy - vy) * (gh / vh);
 
 draw_set_halign(fa_center);
 draw_set_colour(c_yellow);
-draw_text(gx, gy - 20, "DOOR");
+draw_text(gx, gy - 20, "");
 
 if (show_text) {
     draw_set_colour(c_white);

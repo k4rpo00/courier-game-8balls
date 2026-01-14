@@ -11,3 +11,4 @@ if (instance_number(obj_job_manager) > 1) {
     instance_destroy();
     exit;
 }
+depth = -1000001;

@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"sh_colorblind",
+  "name":"sh_colorblind",
+  "parent":{
+    "name":"compatibility",
+    "path":"folders/Scripts/compatibility.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}
