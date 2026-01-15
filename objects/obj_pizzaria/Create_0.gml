@@ -17,6 +17,10 @@ global.zoom_max  = 2.5;
 
 global.base_view_w = __view_get(e__VW.WView, 0);
 global.base_view_h = __view_get(e__VW.HView, 0);
+window_set_size(1280, 720);
+
+
+window_set_fullscreen(true);
 if (!instance_exists(obj_postfx))
     instance_create_depth(0, 0, -1000, obj_postfx);
 
