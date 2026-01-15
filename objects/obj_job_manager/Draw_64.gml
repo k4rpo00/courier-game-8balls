@@ -87,20 +87,49 @@ if (!is_undefined(job) && job.active) {
     var sx = (wx - vx) * (gw / vw);
     var sy = (wy - vy) * (gh / vh);
 
-    // Lift marker upward so it doesn't sit behind tall buildings
-    var lift_text = 80;  // change if you want higher/lower
+    var lift_text = 80;  
     var lift_ring = 50;
 
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
 
-    // main text
+
     draw_set_colour(c_yellow);
     draw_text(sx, sy - lift_text, "DELIVERY");
 
     draw_set_colour(c_yellow);
     draw_circle(sx, sy - lift_ring, 14, false);
+    
+    var arr = 40;
+
+
+if (sx < 0 || sx > gw || sy < 0 || sy > gh) {
+
+    var cx = clamp(sx, pad, gw - arr);
+    var cy = clamp(sy, pad, gh - arr);
+
+  
+    var ang = point_direction(cx, cy, sx, sy);
+
+    var r  = 16;
+    var x1 = cx + lengthdir_x(r, ang);
+    var y1 = cy + lengthdir_y(r, ang);
+
+    var x2 = cx + lengthdir_x(r, ang + 140);
+    var y2 = cy + lengthdir_y(r, ang + 140);
+
+    var x3 = cx + lengthdir_x(r, ang - 140);
+    var y3 = cy + lengthdir_y(r, ang - 140);
+
+    draw_set_colour(c_yellow);
+    draw_triangle(x1, y1, x2, y2, x3, y3, false);
+
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text(cx, cy - 22, "DELIVERY");
 }
+}
+
 
 
 
