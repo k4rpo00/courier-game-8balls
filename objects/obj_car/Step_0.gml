@@ -1,5 +1,4 @@
 event_inherited();
-
 if (global.game_paused) exit;
 
 var on_road  = place_meeting(x, y, obj_road);
@@ -12,21 +11,19 @@ if (on_grass) {
     grass_timer   = 0;
     grass_penalty = false;
 }
+var spm = (variable_global_exists("car_speed_mult") ? global.car_speed_mult : 1.0);
+spm = clamp(spm, 0.6, 1.4);
 
-var cur_max_fwd = max_speed;
-var cur_max_rev = max_reverse; 
+var cur_max_fwd = max_speed   * spm;
+var cur_max_rev = max_reverse * spm;
 
 var cur_accel = accel;
 var cur_decel = decel;
 
 if (grass_penalty) {
-
-    cur_max_fwd = max_speed * 0.3;
-
-  
-    cur_max_rev = max(max_reverse * 0.3, -0.6);
-
-
+    cur_max_fwd *= 0.3;
+    cur_max_rev *= 0.3;
+    
     cur_accel = accel * 0.6;
     cur_decel = decel * 0.4;
 }
@@ -94,8 +91,14 @@ if (!place_meeting(nx, ny, b0) && !place_meeting(nx, ny, b1) && !place_meeting(n
 }
 
 
-if (blocked && speed != 0) {
-    speed = 0;
+if (blocked) {
+
+    var push = 2;
+    x -= lengthdir_x(push, direction);
+    y -= lengthdir_y(push, direction);
+
+ 
+    if (speed > 0) speed = 0;
 }
 
 

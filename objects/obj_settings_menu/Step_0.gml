@@ -52,21 +52,26 @@ for (var i = 0; i < action_count; i++) {
     var sy1   = row_y - 18;
     var sy2   = row_y + 18;
 
-    if (mx > slot_x1 && mx < slot_x2 && my > sy1 && my < sy2) {
-        if (mouse_check_button_pressed(mb_left)) {
+ if (mx > slot_x1 && mx < slot_x2 && my > sy1 && my < sy2) {
+    if (mouse_check_button_pressed(mb_left)) {
 
-            
-            if (i <= 5) {
-                waiting_for = i;
-                keyboard_lastkey = 0;
-            }
-          
-            else if (i == 6) {
-                cb_mode_temp = (cb_mode_temp + 1) mod 4;
-            }
+        if (i <= 5) {
+            waiting_for = i;
+            keyboard_lastkey = 0;
+        }
+        else if (i == 6) {
+            cb_mode_temp = (cb_mode_temp + 1) mod 4;
+        }
+        else if (i == 7) {
+            if (car_speed_temp <= 0.61) car_speed_temp = 1.0;
+            else if (car_speed_temp <= 1.01) car_speed_temp = 1.4;
+            else car_speed_temp = 0.6;
         }
     }
 }
+}
+        
+
 
 var btn_w = 180;
 var btn_h = 32;
@@ -92,6 +97,7 @@ if (mx > save_x1 && mx < save_x2 && my > save_y1 && my < save_y2) {
         global.key_interact = key_interact_temp;
         global.key_pause    = key_pause_temp;
         global.cb_mode      = cb_mode_temp;
+        global.car_speed_mult = car_speed_temp;
 
     
         ini_open("settings.ini");
@@ -102,6 +108,7 @@ if (mx > save_x1 && mx < save_x2 && my > save_y1 && my < save_y2) {
         ini_write_real("keys", "interact", global.key_interact);
         ini_write_real("keys", "pause",    global.key_pause);
         ini_write_real("accessibility", "cb_mode", global.cb_mode); 
+        ini_write_real("gameplay", "car_speed_mult", global.car_speed_mult);
         
         ini_close();
         instance_destroy();
@@ -122,4 +129,20 @@ var cb_sy2 = cb_row_y + 18;
 if (mx > slot_x1 && mx < slot_x2 && my > cb_sy1 && my < cb_sy2) {
     if (keyboard_check_pressed(vk_left))  cb_mode_temp = (cb_mode_temp + 3) mod 4;
     if (keyboard_check_pressed(vk_right)) cb_mode_temp = (cb_mode_temp + 1) mod 4;
+}
+var sp_row_y = first_y + 7 * row_h;
+var sp_sy1 = sp_row_y - 18;
+var sp_sy2 = sp_row_y + 18;
+
+if (mx > slot_x1 && mx < slot_x2 && my > sp_sy1 && my < sp_sy2) {
+    if (keyboard_check_pressed(vk_left)) {
+        if (car_speed_temp <= 0.61) car_speed_temp = 1.4;
+        else if (car_speed_temp <= 1.01) car_speed_temp = 0.6;
+        else car_speed_temp = 1.0;
+    }
+    if (keyboard_check_pressed(vk_right)) {
+        if (car_speed_temp <= 0.61) car_speed_temp = 1.0;
+        else if (car_speed_temp <= 1.01) car_speed_temp = 1.4;
+        else car_speed_temp = 0.6;
+    }
 }

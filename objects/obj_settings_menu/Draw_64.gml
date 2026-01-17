@@ -61,6 +61,7 @@ function label_for_index(_i) {
         case 4: return "Interact";
         case 5: return "Pause";
         case 6: return "Colorblind Mode";
+        case 7: return "Car Speed";
     }
     return "";
 }
@@ -76,6 +77,11 @@ function temp_key_for_index(_i) {
     }
     return 0;
 }
+function car_speed_name(_m) {
+    if (_m <= 0.61) return "Slow";
+    if (_m <= 1.01) return "Normal";
+    return "Fast";
+}
 
 function key_to_text(_k) {
     if (_k == vk_escape) return "ESC";
@@ -83,6 +89,7 @@ function key_to_text(_k) {
     if (_k == vk_enter)  return "Enter";
     return chr(_k);
 }
+
 
 for (var i = 0; i < action_count; i++) {
 
@@ -102,11 +109,15 @@ for (var i = 0; i < action_count; i++) {
     draw_set_valign(fa_middle);
     draw_set_colour(c_white);
 
-   if (i <= 5) {
+if (i <= 5) {
     var k = temp_key_for_index(i);
     draw_text((slot_x1 + slot_x2) * 0.5, row_y, key_to_text(k));
-} else if (i == 6) {
+}
+else if (i == 6) {
     draw_text((slot_x1 + slot_x2) * 0.5, row_y, cb_name(cb_mode_temp));
+}
+else if (i == 7) {
+    draw_text((slot_x1 + slot_x2) * 0.5, row_y, car_speed_name(car_speed_temp));
 }
 }
 
