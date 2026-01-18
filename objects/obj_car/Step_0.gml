@@ -55,10 +55,7 @@ if (occupied) {
     if (abs(speed) < cur_decel) speed = 0;
     else speed -= cur_decel * sign(speed);
 }
-if (occupied && instance_exists(driver)) {
-    driver.x = x;
-    driver.y = y;
-}
+
 
 direction = direction mod 360;
 
@@ -98,13 +95,24 @@ if (!place_meeting(nx, ny, b0) && !place_meeting(nx, ny, b1) && !place_meeting(n
 if (blocked) {
 
     var push = 2;
-    x -= lengthdir_x(push, direction);
-    y -= lengthdir_y(push, direction);
 
- 
-    if (speed > 0) speed = 0;
+    var mv_len = point_distance(0, 0, hsp, vsp);
+    if (mv_len > 0) {
+        x -= (hsp / mv_len) * push;
+        y -= (vsp / mv_len) * push;
+    }
+
+  
+    speed = 0;
 }
-
+if (occupied && instance_exists(driver)) {
+    driver.x = x;
+    driver.y = y;
+}
+if (room == rm_test) {
+    x = clamp(x, global.world_min_x, global.world_max_x);
+    y = clamp(y, global.world_min_y, global.world_max_y);
+}
 
 var n = sprite_get_number(iso_sprite); 
 var d = (direction mod 360 + 360) mod 360;

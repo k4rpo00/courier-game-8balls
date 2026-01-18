@@ -39,3 +39,9 @@ ini_open("settings.ini");
 global.cb_mode = ini_read_real("accessibility", "colorblind_mode", global.cb_mode);
 ini_close();
 global.pizzeria_door_id = id;
+
+global.world_min_x = 0;
+global.world_min_y = 0;
+
+global.world_max_x = cols * 32 - 1;
+global.world_max_y = rows * 32 - 1;

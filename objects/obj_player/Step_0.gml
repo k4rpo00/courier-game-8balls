@@ -102,7 +102,10 @@ if (!hit) {
         }
     }
 
-
+if (room == rm_test) { 
+    x = clamp(x, global.world_min_x, global.world_max_x);
+    y = clamp(y, global.world_min_y, global.world_max_y);
+}
     var c_hint = instance_nearest(x, y, obj_car);
 
     if (c_hint != noone && !c_hint.occupied && point_distance(x, y, c_hint.x, c_hint.y) < 64) {
