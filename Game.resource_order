@@ -45,6 +45,7 @@
     {"name":"rm_pizzaria","order":1,"path":"rooms/rm_pizzaria/rm_pizzaria.yy",},
     {"name":"scr_cb_name","order":1,"path":"scripts/scr_cb_name/scr_cb_name.yy",},
     {"name":"sh_colorblind","order":2,"path":"shaders/sh_colorblind/sh_colorblind.yy",},
+    {"name":"spr_bike","order":24,"path":"sprites/spr_bike/spr_bike.yy",},
     {"name":"spr_board","order":19,"path":"sprites/spr_board/spr_board.yy",},
     {"name":"spr_building","order":6,"path":"sprites/spr_building/spr_building.yy",},
     {"name":"spr_car","order":4,"path":"sprites/spr_car/spr_car.yy",},

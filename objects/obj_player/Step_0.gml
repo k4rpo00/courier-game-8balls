@@ -110,11 +110,10 @@ if (!hit) {
     }
 
    
-   if (exit_cooldown <= 0 && keyboard_check_pressed(global.key_interact)) {
-    var c = instance_nearest(x, y, obj_car);
+if (exit_cooldown <= 0 && keyboard_check_pressed(global.key_interact)) {
+    var c = near_car;
 
-    if (c != noone && point_distance(x, y, c.x, c.y) < 64 && !c.occupied) {
-
+    if (c != noone && !c.occupied) {
         in_car  = true;
         car     = c;
         visible = false;
@@ -122,6 +121,7 @@ if (!hit) {
         c.occupied = true;
         c.driver   = id;
 
+       
         x = c.x;
         y = c.y;
 

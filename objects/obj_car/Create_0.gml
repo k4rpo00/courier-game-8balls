@@ -1,5 +1,5 @@
 event_inherited();              
-iso_sprite = spr_iso_car;      
+iso_sprite = spr_bike;      
 
 speed       = 0;
 direction   = 0;               

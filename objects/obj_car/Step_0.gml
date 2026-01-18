@@ -55,6 +55,10 @@ if (occupied) {
     if (abs(speed) < cur_decel) speed = 0;
     else speed -= cur_decel * sign(speed);
 }
+if (occupied && instance_exists(driver)) {
+    driver.x = x;
+    driver.y = y;
+}
 
 direction = direction mod 360;
 
@@ -102,7 +106,9 @@ if (blocked) {
 }
 
 
-iso_subimg = round(direction / 360 * sprite_get_number(iso_sprite));
+var n = sprite_get_number(iso_sprite); 
+var d = (direction mod 360 + 360) mod 360;
+iso_subimg = floor((d / 360) * n) mod n;
 
 
 if (occupied && keyboard_check_pressed(global.key_interact)) {
