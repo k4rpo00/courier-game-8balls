@@ -68,21 +68,35 @@ var b2 = obj_house;
 
 var blocked = false;
 
+
 if (!place_meeting(nx, ny, b0) && !place_meeting(nx, ny, b1) && !place_meeting(nx, ny, b2)) {
-    x = nx; y = ny;
+    x = nx;
+    y = ny;
 } else {
     blocked = true;
 
-    if (!place_meeting(nx, y, b0) && !place_meeting(nx, y, b1) && !place_meeting(nx, y, b2)) x = nx;
-    if (!place_meeting(x, ny, b0) && !place_meeting(x, ny, b1) && !place_meeting(x, ny, b2)) y = ny;
+ 
+    if (!place_meeting(nx, y, b0) && !place_meeting(nx, y, b1) && !place_meeting(nx, y, b2)) {
+        x = nx;
+    }
+
+    if (!place_meeting(x, ny, b0) && !place_meeting(x, ny, b1) && !place_meeting(x, ny, b2)) {
+        y = ny;
+    }
 }
 
-if (blocked) speed = 0;
+if (blocked) {
 
 
-if (occupied && instance_exists(driver)) {
-    driver.x = x;
-    driver.y = y;
+    var mv_len = point_distance(0, 0, hsp, vsp);
+    if (mv_len > 0) {
+        var push = 2;
+        x -= (hsp / mv_len) * push;
+        y -= (vsp / mv_len) * push;
+    }
+
+
+    if (speed > 0) speed = 0;
 }
 
 
@@ -91,23 +105,29 @@ if (room == rm_test) {
     y = clamp(y, global.world_min_y, global.world_max_y);
 }
 
+
+if (occupied && instance_exists(driver)) {
+    driver.x = x;
+    driver.y = y;
+}
+
+
 var spr_used = (occupied ? iso_sprite_driver : iso_sprite);
-var n = sprite_get_number(spr_used);
+var n = max(1, sprite_get_number(spr_used));
 iso_subimg = floor((direction / 360) * n) mod n;
 
 
 if (occupied && keyboard_check_pressed(global.key_interact)) {
 
-
     var exit_dist = 28;
-    exit_x = x - lengthdir_x(exit_dist, direction);
-    exit_y = y - lengthdir_y(exit_dist, direction);
+    var ex = x - lengthdir_x(exit_dist, direction);
+    var ey = y - lengthdir_y(exit_dist, direction);
 
     var p = driver;
     if (instance_exists(p)) {
         with (p) {
-            x = other.exit_x;
-            y = other.exit_y;
+            x = ex;
+            y = ey;
 
             visible = true;
             in_car  = false;
