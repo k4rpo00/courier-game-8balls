@@ -22,19 +22,41 @@ if (variable_global_exists("next_spawn_x") && global.next_spawn_x != undefined) 
 }
 
 var tries = 60;
-if (place_meeting(x, y, obj_building) || place_meeting(x, y, obj_house) || place_meeting(x, y, obj_hotel)) {
 
+var hit =
+    counter_feet_hit(x, y) ||
+    place_meeting(x, y, obj_table1) ||
+    place_meeting(x, y, obj_stool) ||
+    place_meeting(x, y, obj_wall_left) ||
+    place_meeting(x, y, obj_wall_right);
+
+if (room == rm_test) {
+    hit = hit
+        || place_meeting(x, y, obj_building)
+        || place_meeting(x, y, obj_house)
+        || place_meeting(x, y, obj_hotel);
+}
+
+if (hit) {
     for (var i = 0; i < tries; i++) {
         var ang = irandom(359);
         var tx = x + lengthdir_x(8, ang);
         var ty = y + lengthdir_y(8, ang);
 
-        if (!place_meeting(tx, ty, obj_building)
-        &&  !place_meeting(tx, ty, obj_house)
-        &&  !place_meeting(tx, ty, obj_hotel)) {
-            x = tx;
-            y = ty;
-            break;
+        var free =
+            !counter_feet_hit(tx, ty) &&
+            !place_meeting(tx, ty, obj_table1) &&
+            !place_meeting(tx, ty, obj_stool) &&
+            !place_meeting(tx, ty, obj_wall_left) &&
+            !place_meeting(tx, ty, obj_wall_right);
+
+        if (room == rm_test) {
+            free = free
+                && !place_meeting(tx, ty, obj_building)
+                && !place_meeting(tx, ty, obj_house)
+                && !place_meeting(tx, ty, obj_hotel);
         }
+
+        if (free) { x = tx; y = ty; break; }
     }
 }

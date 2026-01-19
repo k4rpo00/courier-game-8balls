@@ -1,11 +1,11 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_player_walk_right",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":90,
   "bbox_left":29,
   "bbox_right":76,
-  "bbox_top":3,
+  "bbox_top":71,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,

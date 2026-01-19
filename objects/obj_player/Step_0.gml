@@ -34,29 +34,52 @@ if (!in_car) {
 
    var col_obj  = obj_building;
    var col_obj1 = obj_hotel;
-   var col_obj2 = obj_house;
+   var col_obj2 = obj_house; 
+   var col_obj3 = obj_counter;
+   var col_obj4 = obj_stool;
+   var col_obj5 = obj_table1;
+   var col_obj6 = obj_wall_left;
+   var col_obj7 = obj_wall_right;
 
 var nx = x + dx;
 var ny = y + dy;
 
-var hit = place_meeting(nx, ny, obj_building)
-       || place_meeting(nx, ny, obj_house)
-       || place_meeting(nx, ny, obj_hotel);
+var hit =
+    place_meeting(nx, ny, obj_building) ||
+    place_meeting(nx, ny, obj_house)    ||
+    place_meeting(nx, ny, obj_hotel)    ||
+    counter_feet_hit(nx, ny)            ||
+    place_meeting(nx, ny, obj_stool)    ||
+    place_meeting(nx, ny, obj_table1)   ||
+    place_meeting(nx, ny, obj_wall_left)||
+    place_meeting(nx, ny, obj_wall_right);
 
 if (!hit) {
     x = nx;
     y = ny;
 } else {
-  
-    var hitx = place_meeting(nx, y, obj_building)
-            || place_meeting(nx, y, obj_house)
-            || place_meeting(nx, y, obj_hotel);
+
+    var hitx =
+        place_meeting(nx, y, obj_building) ||
+        place_meeting(nx, y, obj_house)    ||
+        place_meeting(nx, y, obj_hotel)    ||
+        counter_feet_hit(nx, y)            ||  
+        place_meeting(nx, y, obj_stool)    ||
+        place_meeting(nx, y, obj_table1)   ||
+        place_meeting(nx, y, obj_wall_left)||
+        place_meeting(nx, y, obj_wall_right);
 
     if (!hitx) x = nx;
 
-    var hity = place_meeting(x, ny, obj_building)
-            || place_meeting(x, ny, obj_house)
-            || place_meeting(x, ny, obj_hotel);
+    var hity =
+        place_meeting(x, ny, obj_building) ||
+        place_meeting(x, ny, obj_house)    ||
+        place_meeting(x, ny, obj_hotel)    ||
+        counter_feet_hit(x, ny)            ||   
+        place_meeting(x, ny, obj_stool)    ||
+        place_meeting(x, ny, obj_table1)   ||
+        place_meeting(x, ny, obj_wall_left)||
+        place_meeting(x, ny, obj_wall_right);
 
     if (!hity) y = ny;
 }
