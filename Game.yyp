@@ -85,6 +85,7 @@
     {"id":{"name":"scr_counter_feet_hit","path":"scripts/scr_counter_feet_hit/scr_counter_feet_hit.yy",},},
     {"id":{"name":"trace","path":"scripts/trace/trace.yy",},},
     {"id":{"name":"sh_colorblind","path":"shaders/sh_colorblind/sh_colorblind.yy",},},
+    {"id":{"name":"spr_bike_player","path":"sprites/spr_bike_player/spr_bike_player.yy",},},
     {"id":{"name":"spr_bike","path":"sprites/spr_bike/spr_bike.yy",},},
     {"id":{"name":"spr_board","path":"sprites/spr_board/spr_board.yy",},},
     {"id":{"name":"spr_building","path":"sprites/spr_building/spr_building.yy",},},

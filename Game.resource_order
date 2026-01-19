@@ -48,6 +48,7 @@
     {"name":"scr_cb_name","order":1,"path":"scripts/scr_cb_name/scr_cb_name.yy",},
     {"name":"scr_counter_feet_hit","order":2,"path":"scripts/scr_counter_feet_hit/scr_counter_feet_hit.yy",},
     {"name":"sh_colorblind","order":2,"path":"shaders/sh_colorblind/sh_colorblind.yy",},
+    {"name":"spr_bike_player","order":27,"path":"sprites/spr_bike_player/spr_bike_player.yy",},
     {"name":"spr_bike","order":24,"path":"sprites/spr_bike/spr_bike.yy",},
     {"name":"spr_board","order":19,"path":"sprites/spr_board/spr_board.yy",},
     {"name":"spr_building","order":6,"path":"sprites/spr_building/spr_building.yy",},
