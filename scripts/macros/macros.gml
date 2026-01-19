@@ -1,6 +1,6 @@
 function macros() {
-#macro iso_mul_y (25/32)
-#macro iso_mul_x (50/32)
+#macro ISO_MUL_X (50/32)
+#macro ISO_MUL_Y (25/32)
 
 
 
