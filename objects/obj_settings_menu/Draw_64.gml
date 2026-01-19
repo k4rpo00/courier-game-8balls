@@ -62,10 +62,13 @@ function label_for_index(_i) {
         case 5: return "Pause";
         case 6: return "Colorblind Mode";
         case 7: return "Car Speed";
+        case 8: return "Tutorial";
     }
     return "";
 }
-
+function tut_name(_v) {
+    return _v ? "On" : "Off";
+}
 function temp_key_for_index(_i) {
     switch (_i) {
         case 0: return key_up_temp;
@@ -118,6 +121,9 @@ else if (i == 6) {
 }
 else if (i == 7) {
     draw_text((slot_x1 + slot_x2) * 0.5, row_y, car_speed_name(car_speed_temp));
+}
+    else if (i == 8) {
+    draw_text((slot_x1 + slot_x2) * 0.5, row_y, tut_name(tutorial_temp));
 }
 }
 

@@ -1,6 +1,3 @@
-/// @description Camera + pause
-
-// === PAUSE TOGGLE ===
 if (keyboard_check_pressed(global.key_pause)) {
     if (!instance_exists(obj_pause_menu)) {
         instance_create_layer(0, 0, "Compatibility_Instances_Depth_0", obj_pause_menu);

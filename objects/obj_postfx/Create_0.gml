@@ -6,4 +6,4 @@ if (instance_number(object_index) > 1)
 persistent = true;
 
 
-depth = -1000000;
+depth = 1000000;

@@ -45,3 +45,6 @@ global.world_min_y = 0;
 
 global.world_max_x = cols * 32 - 1;
 global.world_max_y = rows * 32 - 1;
+if (!instance_exists(obj_tutorial)) {
+    instance_create_depth(0, 0, -1000002, obj_tutorial);
+}

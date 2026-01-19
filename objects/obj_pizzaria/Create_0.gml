@@ -28,3 +28,6 @@ if (!variable_global_exists("base_view_w")) {
 
 if (!instance_exists(obj_postfx)) instance_create_depth(0, 0, -1000, obj_postfx);
 if (!instance_exists(obj_hud))    instance_create_depth(0, 0, -999, obj_hud);
+    if (!instance_exists(obj_tutorial)) {
+    instance_create_depth(0, 0, -1000002, obj_tutorial);
+}

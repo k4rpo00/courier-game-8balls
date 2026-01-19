@@ -32,6 +32,7 @@ if (waiting_for >= 0) {
                 case 3: key_right_temp    = key; break;
                 case 4: key_interact_temp = key; break;
                 case 5: key_pause_temp    = key; break;
+                   
             }
         }
        
@@ -67,6 +68,9 @@ for (var i = 0; i < action_count; i++) {
             else if (car_speed_temp <= 1.01) car_speed_temp = 1.4;
             else car_speed_temp = 0.6;
         }
+        else if (i == 8) {
+    tutorial_temp = !tutorial_temp;
+}
     }
 }
 }
@@ -98,7 +102,14 @@ if (mx > save_x1 && mx < save_x2 && my > save_y1 && my < save_y2) {
         global.key_pause    = key_pause_temp;
         global.cb_mode      = cb_mode_temp;
         global.car_speed_mult = car_speed_temp;
+        global.tut_on = tutorial_temp;
+        if (global.tut_on) {
+    global.tut_step = 0;
+    global.tut_show = false;
+    global.tut_text = "";
 
+    global.tut_money_base = undefined; 
+}
     
         ini_open("settings.ini");
         ini_write_real("keys", "up",       global.key_up);
@@ -109,6 +120,7 @@ if (mx > save_x1 && mx < save_x2 && my > save_y1 && my < save_y2) {
         ini_write_real("keys", "pause",    global.key_pause);
         ini_write_real("accessibility", "cb_mode", global.cb_mode); 
         ini_write_real("gameplay", "car_speed_mult", global.car_speed_mult);
+        ini_write_real("tutorial", "enabled", global.tut_on ? 1 : 0);
         
         ini_close();
         instance_destroy();

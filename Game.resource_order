@@ -39,6 +39,7 @@
     {"name":"obj_table","order":16,"path":"objects/obj_table/obj_table.yy",},
     {"name":"obj_table1","order":22,"path":"objects/obj_table1/obj_table1.yy",},
     {"name":"obj_tile","order":7,"path":"objects/obj_tile/obj_tile.yy",},
+    {"name":"obj_tutorial","order":31,"path":"objects/obj_tutorial/obj_tutorial.yy",},
     {"name":"obj_wall_left","order":26,"path":"objects/obj_wall_left/obj_wall_left.yy",},
     {"name":"obj_wall_right","order":27,"path":"objects/obj_wall_right/obj_wall_right.yy",},
     {"name":"obj_wall1","order":14,"path":"objects/obj_wall1/obj_wall1.yy",},
