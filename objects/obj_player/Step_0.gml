@@ -85,45 +85,51 @@ if (!hit) {
 }
     
 
-    if (dx != 0 || dy != 0) {
-        
+var moving = (dx != 0 || dy != 0);
 
-        if (keyboard_check(global.key_up) && !keyboard_check(global.key_down)) {
-            facing = 2; 
-        }
-        else if (keyboard_check(global.key_down) && !keyboard_check(global.key_up)) {
-            facing = 0; 
-        }
-        else if (keyboard_check(global.key_left) && !keyboard_check(global.key_right)) {
-            facing = 3; 
-        }
-        else if (keyboard_check(global.key_right) && !keyboard_check(global.key_left)) {
-            facing = 1; 
-        }
-        
-        switch (facing) {
-            case 0: sprite_index = spr_player_walk_up;    break;
-            case 1: sprite_index = spr_player_walk_right; break;
-            case 2: sprite_index = spr_player_walk_down;  break;
-            case 3: sprite_index = spr_player_walk_left;  break;
-        }
+if (moving) {
 
-       
-        image_speed = 0.25;  
 
-    } else {
-       
-        image_speed = 0;
-        image_index = 0;
+    if (dx < 0 && dy < 0) facing8 = 7;       
+    else if (dx > 0 && dy < 0) facing8 = 1;  
+    else if (dx > 0 && dy > 0) facing8 = 3;  
+    else if (dx < 0 && dy > 0) facing8 = 5;  
+    else if (dy < 0) facing8 = 0;            
+    else if (dy > 0) facing8 = 4;            
+    else if (dx > 0) facing8 = 2;            
+    else if (dx < 0) facing8 = 6;            
 
-      
-        switch (facing) {
-            case 0: sprite_index = spr_player_walk_up;    break;
-            case 1: sprite_index = spr_player_walk_right; break;
-            case 2: sprite_index = spr_player_walk_down;  break;
-            case 3: sprite_index = spr_player_walk_left;  break;
-        }
+    switch (facing8) {
+        case 0: sprite_index = spr_p_walk_up;    break;
+        case 1: sprite_index = spr_p_walk_ru;    break;
+        case 2: sprite_index = spr_p_walk_right; break;
+        case 3: sprite_index = spr_p_walk_rd;    break;
+        case 4: sprite_index = spr_p_walk_down;  break;
+        case 5: sprite_index = spr_p_walk_ld;    break;
+        case 6: sprite_index = spr_p_walk_left;  break;
+        case 7: sprite_index = spr_p_walk_lu;    break;
     }
+
+    image_speed = 0.25; 
+
+} else {
+
+   
+    switch (facing8) {
+        case 0: sprite_index = spr_p_walk_up;    break;
+        case 1: sprite_index = spr_p_walk_ru;    break;
+        case 2: sprite_index = spr_p_walk_right; break;
+        case 3: sprite_index = spr_p_walk_rd;    break;
+        case 4: sprite_index = spr_p_walk_down;  break;
+        case 5: sprite_index = spr_p_walk_ld;    break;
+        case 6: sprite_index = spr_p_walk_left;  break;
+        case 7: sprite_index = spr_p_walk_lu;    break;
+    }
+
+    image_speed = 0;
+    image_index = 0; 
+}
+
 
 if (room == rm_test) { 
     x = clamp(x, global.world_min_x, global.world_max_x);

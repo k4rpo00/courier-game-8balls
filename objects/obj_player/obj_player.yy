@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_player_walk_down",
-    "path":"sprites/spr_player_walk_down/spr_player_walk_down.yy",
+    "name":"spr_p_walk_down",
+    "path":"sprites/spr_p_walk_down/spr_p_walk_down.yy",
   },
   "spriteMaskId":{
     "name":"spr_player_mask",
