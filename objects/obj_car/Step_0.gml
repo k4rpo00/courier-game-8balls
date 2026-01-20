@@ -1,5 +1,6 @@
 event_inherited();
 if (variable_global_exists("game_paused") && global.game_paused) exit;
+    if (crash_cooldown > 0) crash_cooldown--;
 
 var on_road  = place_meeting(x, y, obj_road);
 var on_grass = !on_road;
@@ -92,7 +93,12 @@ if (!place_meeting(nx, ny, b0) && !place_meeting(nx, ny, b1) && !place_meeting(n
 }
 
 if (blocked) {
+if (crash_cooldown <= 0) {
+    if (!variable_global_exists("money")) global.money = 0;
 
+    global.money = max(0, global.money - crash_fee);
+    crash_cooldown = room_speed div 2; 
+}
 
     var mv_len = point_distance(0, 0, hsp, vsp);
     if (mv_len > 0) {

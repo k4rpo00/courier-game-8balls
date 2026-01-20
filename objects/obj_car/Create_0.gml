@@ -21,3 +21,5 @@ driver   = noone;
 
 exit_x = x;
 exit_y = y;
+crash_cooldown = 0;   
+crash_fee      = 3;
