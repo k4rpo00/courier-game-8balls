@@ -7,3 +7,4 @@ persistent = true;
 
 
 depth = 1000000;
+application_surface_draw_enable(false);

@@ -17,7 +17,7 @@ with (obj_tile) {
 
 
 if (variable_instance_exists(id, "iso_grid")) {
-    if (ds_exists(iso_grid, ds_type_grid)) {
+    if (is_real(iso_grid) && ds_exists(iso_grid, ds_type_grid)) {
         ds_grid_destroy(iso_grid);
     }
 }
@@ -25,12 +25,4 @@ if (variable_instance_exists(id, "iso_grid")) {
 
 iso_grid = ds_grid_create(128, 128);
 
-global.zoom = 1;
-global.zoom_min = 0.5;
-global.zoom_max = 2.5;
-
-global.base_view_w = __view_get(e__VW.WView, 0);
-global.base_view_h = __view_get(e__VW.HView, 0);
-
-__view_set(e__VW.WView, 0, global.base_view_w);
-__view_set(e__VW.HView, 0, global.base_view_h);
+scr_apply_zoom();

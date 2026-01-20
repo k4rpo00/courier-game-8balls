@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"delivery_pick_customer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"delivery_pick_customer",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

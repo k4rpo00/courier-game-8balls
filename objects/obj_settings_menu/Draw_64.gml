@@ -66,6 +66,11 @@ function label_for_index(_i) {
     }
     return "";
 }
+function car_speed_name(_m) {
+    if (_m <= 0.60) return "Slow";
+    if (_m <= 1.05) return "Normal";
+    return "Fast";
+}
 function tut_name(_v) {
     return _v ? "On" : "Off";
 }
@@ -79,11 +84,6 @@ function temp_key_for_index(_i) {
         case 5: return key_pause_temp;
     }
     return 0;
-}
-function car_speed_name(_m) {
-    if (_m <= 0.61) return "Slow";
-    if (_m <= 1.01) return "Normal";
-    return "Fast";
 }
 
 function key_to_text(_k) {

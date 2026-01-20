@@ -1,5 +1,8 @@
-if (keyboard_check_pressed(global.key_interact) || keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space)) {
-    line_i += 1;
+if (keyboard_check_pressed(global.key_interact) ||
+    keyboard_check_pressed(vk_enter) ||
+    keyboard_check_pressed(vk_space))
+{
+    line_i++;
 
     if (line_i >= array_length(lines)) {
         global.game_paused = false;

@@ -14,12 +14,16 @@ if (on_grass) {
 
 
 var spm = (variable_global_exists("car_speed_mult") ? global.car_speed_mult : 1.0);
-spm = clamp(spm, 0.6, 1.4);
+spm = clamp(spm, 0.55, 1.8);
 
 var cur_max_fwd = max_speed   * spm;
 var cur_max_rev = max_reverse * spm;
-var cur_accel   = accel;
-var cur_decel   = decel;
+
+var t = (spm - 0.55) / (1.8 - 0.55);
+t = clamp(t, 0, 1);
+
+var cur_accel = accel * lerp(0.85, 1.35, t);
+var cur_decel = decel * lerp(0.90, 1.25, t);
 
 if (grass_penalty) {
     cur_max_fwd *= 0.3;

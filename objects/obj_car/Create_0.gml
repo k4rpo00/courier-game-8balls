@@ -21,4 +21,3 @@ driver   = noone;
 
 exit_x = x;
 exit_y = y;
-show_debug_message("Bike instance: " + string(id));

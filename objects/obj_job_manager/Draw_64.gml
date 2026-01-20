@@ -128,6 +128,7 @@ if (sx < 0 || sx > gw || sy < 0 || sy > gh) {
     draw_set_valign(fa_middle);
     draw_text(cx, cy - 22, "DELIVERY");
 }
+
 }
 
 

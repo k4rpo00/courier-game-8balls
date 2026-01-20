@@ -12,3 +12,5 @@ if (instance_number(obj_job_manager) > 1) {
     exit;
 }
 depth = -1000001;
+deliver_dist = 64;
+show_hint = false;

@@ -1,9 +1,7 @@
 global.game_paused = true;
+depth = -1000006;
 
-lines = [
-    "You picked up a pizza box!",
-    "Deliver it to the marked building."
-];
-
-line_i = 0;
-depth = -2000000001;
+if (!variable_instance_exists(id, "portrait")) portrait = -1;
+if (!variable_instance_exists(id, "name_str")) name_str = "";
+if (!variable_instance_exists(id, "lines"))    lines = ["..."];
+if (!variable_instance_exists(id, "line_i"))   line_i = 0;

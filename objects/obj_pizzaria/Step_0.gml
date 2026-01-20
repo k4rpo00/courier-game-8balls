@@ -22,3 +22,9 @@ if (instance_exists(target)) {
     __view_set(e__VW.XView, 0, target.x - vw * 0.5);
     __view_set(e__VW.YView, 0, target.y - vh * 0.5);
 }
+if (room == rm_pizzaria) {
+    with (obj_player) {
+        x = clamp(x, global.piz_min_x, global.piz_max_x);
+        y = clamp(y, global.piz_min_y, global.piz_max_y);
+    }
+}

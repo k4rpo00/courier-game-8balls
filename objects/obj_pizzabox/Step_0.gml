@@ -9,13 +9,18 @@ if (point_distance(p.x, p.y, x, y) <= pickup_dist) {
     show_text = true;
     sprite_index = spr_hi;
 
-    if (keyboard_check_pressed(global.key_interact)) {
-        global.has_pizza = true;
+   if (keyboard_check_pressed(global.key_interact)) {
 
-        instance_create_layer(0, 0, "Compatibility_Instances_Depth_0", obj_dialog);
+    global.has_pizza = true;
 
-        taken = true;
-    }
+    var dlg = instance_create_layer(0, 0, "Compatibility_Instances_Depth_0", obj_dialog);
+    dlg.lines  = ["You picked up a pizza box!", "Deliver it to the marked building."];
+    dlg.line_i = 0;
+    dlg.portrait = -1;
+    dlg.name_str = "";
+
+    taken = true;
+}
 } else {
     sprite_index = spr_normal;
 }

@@ -63,11 +63,12 @@ for (var i = 0; i < action_count; i++) {
         else if (i == 6) {
             cb_mode_temp = (cb_mode_temp + 1) mod 4;
         }
-        else if (i == 7) {
-            if (car_speed_temp <= 0.61) car_speed_temp = 1.0;
-            else if (car_speed_temp <= 1.01) car_speed_temp = 1.4;
-            else car_speed_temp = 0.6;
-        }
+       else if (i == 7) {
+ 
+    if (car_speed_temp <= 0.60) car_speed_temp = 1.0;
+    else if (car_speed_temp <= 1.05) car_speed_temp = 1.8;
+    else car_speed_temp = 0.55;
+}
         else if (i == 8) {
     tutorial_temp = !tutorial_temp;
 }
@@ -147,14 +148,16 @@ var sp_sy1 = sp_row_y - 18;
 var sp_sy2 = sp_row_y + 18;
 
 if (mx > slot_x1 && mx < slot_x2 && my > sp_sy1 && my < sp_sy2) {
+
     if (keyboard_check_pressed(vk_left)) {
-        if (car_speed_temp <= 0.61) car_speed_temp = 1.4;
-        else if (car_speed_temp <= 1.01) car_speed_temp = 0.6;
+        if (car_speed_temp <= 0.60) car_speed_temp = 1.8;
+        else if (car_speed_temp <= 1.05) car_speed_temp = 0.55;
         else car_speed_temp = 1.0;
     }
+
     if (keyboard_check_pressed(vk_right)) {
-        if (car_speed_temp <= 0.61) car_speed_temp = 1.0;
-        else if (car_speed_temp <= 1.01) car_speed_temp = 1.4;
-        else car_speed_temp = 0.6;
+        if (car_speed_temp <= 0.60) car_speed_temp = 1.0;
+        else if (car_speed_temp <= 1.05) car_speed_temp = 1.8;
+        else car_speed_temp = 0.55;
     }
 }

@@ -31,3 +31,7 @@ if (!instance_exists(obj_hud))    instance_create_depth(0, 0, -999, obj_hud);
     if (!instance_exists(obj_tutorial)) {
     instance_create_depth(0, 0, -1000002, obj_tutorial);
 }
+global.piz_min_x = 480;
+global.piz_max_x = 900;
+global.piz_min_y = 240;
+global.piz_max_y = 630;
