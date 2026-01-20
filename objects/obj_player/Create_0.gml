@@ -6,7 +6,7 @@ sprite_index = spr_p_walk_down;
 image_speed  = 0;
 image_index  = 0;
 
-walk_speed = 1.5;
+walk_speed = 1;
 
 in_car   = false;
 car      = noone;

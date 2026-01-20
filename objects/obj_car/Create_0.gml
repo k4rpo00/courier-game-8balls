@@ -9,7 +9,7 @@ direction   = 0;
 accel       = 0.10;
 decel       = 0.08;
 
-max_speed   = 1.0;
+max_speed   = 2.0;
 max_reverse = -1.0;
 turn_speed  = 10;
 
