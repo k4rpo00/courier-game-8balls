@@ -19,6 +19,8 @@ cursor_y = 0;
 window_set_size(1280, 720);
 window_set_fullscreen(true);
 
+if (!variable_global_exists("pizza_count")) global.pizza_count = 0;
+
 if (!variable_global_exists("zoom")) {
     global.zoom      = 1;
     global.zoom_min  = 0.5;

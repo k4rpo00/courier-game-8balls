@@ -20,6 +20,7 @@ if (!variable_global_exists("zoom")) {
 }
 
 
+
 if (!variable_global_exists("base_view_w")) {
     global.base_view_w = __view_get(e__VW.WView, 0);
     global.base_view_h = __view_get(e__VW.HView, 0);

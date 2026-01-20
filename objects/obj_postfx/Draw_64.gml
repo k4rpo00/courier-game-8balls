@@ -14,7 +14,7 @@
 //draw_surface_stretched(surf, 0, 0, gw, gh);
 
 //shader_reset();
-/*if (!variable_global_exists("cb_mode")) exit;
+if (!variable_global_exists("cb_mode")) exit;
 if (global.cb_mode == 0) exit;
 
 var surf = application_surface;
