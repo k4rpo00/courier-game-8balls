@@ -69,22 +69,24 @@ var ny = y + vsp;
 var b0 = obj_building;
 var b1 = obj_hotel;
 var b2 = obj_house;
+var b3 = obj_bench;
+var b4 = obj_tree;
 
 var blocked = false;
 
 
-if (!place_meeting(nx, ny, b0) && !place_meeting(nx, ny, b1) && !place_meeting(nx, ny, b2)) {
+if (!place_meeting(nx, ny, b0) && !place_meeting(nx, ny, b1) && !place_meeting(nx, ny, b2)&& !place_meeting(nx, ny, b3)&& !place_meeting(nx, ny, b4)) {
     x = nx;
     y = ny;
 } else {
     blocked = true;
 
  
-    if (!place_meeting(nx, y, b0) && !place_meeting(nx, y, b1) && !place_meeting(nx, y, b2)) {
+    if (!place_meeting(nx, y, b0) && !place_meeting(nx, y, b1) && !place_meeting(nx, y, b2)&& !place_meeting(nx, y, b3)&& !place_meeting(nx, y, b4)) {
         x = nx;
     }
 
-    if (!place_meeting(x, ny, b0) && !place_meeting(x, ny, b1) && !place_meeting(x, ny, b2)) {
+    if (!place_meeting(x, ny, b0) && !place_meeting(x, ny, b1) && !place_meeting(x, ny, b2)&& !place_meeting(x, ny, b3)&& !place_meeting(x, ny, b4)) {
         y = ny;
     }
 }

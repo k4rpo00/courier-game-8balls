@@ -39,7 +39,9 @@ if (!in_car) {
    var col_obj4 = obj_stool;
    var col_obj5 = obj_table1;
    var col_obj6 = obj_wall_left;
-   var col_obj7 = obj_wall_right;
+   var col_obj7 = obj_wall_right; 
+   var col_obj8  = obj_tree;
+   var col_obj9  = obj_bench; 
 
 var nx = x + dx;
 var ny = y + dy;
@@ -52,6 +54,8 @@ var hit =
     place_meeting(nx, ny, obj_stool)    ||
     place_meeting(nx, ny, obj_table1)   ||
     place_meeting(nx, ny, obj_wall_left)||
+    place_meeting(nx, ny, obj_bench)||
+    place_meeting(nx, ny, obj_tree)||
     place_meeting(nx, ny, obj_wall_right);
 
 if (!hit) {
@@ -63,6 +67,8 @@ if (!hit) {
         place_meeting(nx, y, obj_building) ||
         place_meeting(nx, y, obj_house)    ||
         place_meeting(nx, y, obj_hotel)    ||
+        place_meeting(nx, y, obj_tree)     ||
+        place_meeting(nx, y, obj_bench)    ||
         counter_feet_hit(nx, y)            ||  
         place_meeting(nx, y, obj_stool)    ||
         place_meeting(nx, y, obj_table1)   ||
@@ -75,6 +81,8 @@ if (!hit) {
         place_meeting(x, ny, obj_building) ||
         place_meeting(x, ny, obj_house)    ||
         place_meeting(x, ny, obj_hotel)    ||
+        place_meeting(x, ny, obj_tree)     ||
+        place_meeting(x, ny, obj_bench)    ||
         counter_feet_hit(x, ny)            ||   
         place_meeting(x, ny, obj_stool)    ||
         place_meeting(x, ny, obj_table1)   ||

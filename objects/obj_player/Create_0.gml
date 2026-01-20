@@ -39,7 +39,9 @@ if (room == rm_test) {
     hit = hit
         || place_meeting(x, y, obj_building)
         || place_meeting(x, y, obj_house)
-        || place_meeting(x, y, obj_hotel);
+        || place_meeting(x, y, obj_hotel)
+        || place_meeting(x, y, obj_tree)
+        || place_meeting(x, y, obj_bench);
 }
 
 if (hit) {
@@ -59,7 +61,9 @@ if (hit) {
             free = free
                 && !place_meeting(tx, ty, obj_building)
                 && !place_meeting(tx, ty, obj_house)
-                && !place_meeting(tx, ty, obj_hotel);
+                && !place_meeting(tx, ty, obj_hotel)
+                && !place_meeting(tx, ty, obj_tree)
+                && !place_meeting(tx, ty, obj_bench);
         }
 
         if (free) { x = tx; y = ty; break; }
