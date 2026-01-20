@@ -16,7 +16,12 @@ function delivery_pick_customer() {
             { portrait_name: "spr_portrait_10", name: "Dr. Vale", lines: ["Ah, finally.","I was in the middle of research — and forgot dinner again.","Thank you. Truly."] },
             { portrait_name: "spr_portrait_11", name: "Ronan", lines: ["You’re tougher than you look — getting through these streets.","Smells like victory in a box.","Thanks. Keep your head up out there."] },
             { portrait_name: "spr_portrait_12", name: "Elder Rowan", lines: ["Ah, wonderful. You’ve brought supper at exactly the right time.","The city moves fast — but kindness still matters.","Thank you, my friend."] },
-            { portrait_name: "spr_portrait_13", name: "Victor", lines: ["Thanks. I didn’t think anyone would find this place so quickly.","This helps more than you know.","Safe ride back — watch the corners."] }
+            { portrait_name: "spr_portrait_13", name: "Victor", lines: ["Thanks. I didn’t think anyone would find this place so quickly.","This helps more than you know.","Safe ride back — watch the corners."] },
+              { portrait_name: "spr_portrait_14", name: "Lina",  lines: ["Oh—perfect timing.","I’ve been running on fumes all day.","Thanks. Seriously."] },
+            { portrait_name: "spr_portrait_15", name: "Mira",  lines: ["Hi! You actually found my place.","This smells so good I might cry.","Have a safe ride back."] },
+            { portrait_name: "spr_portrait_16", name: "Selene",lines: ["Delivery? Nice.","I was about to eat cereal for dinner again.","You saved me. Thank you."] },
+            { portrait_name: "spr_portrait_17", name: "Amara", lines: ["Yes! Pizza time.","The city’s been loud today — this helps.","Take care out there."] },
+            { portrait_name: "spr_portrait_18", name: "Noor",  lines: ["Hey, thanks for bringing it.","I know these routes can be rough.","Drive safe, okay?"] },
         ];
     }
 
